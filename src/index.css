@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  /* On définit tes couleurs ici pour que tes classes 'orion' fonctionnent */
+  --color-orion-gold: #D4AF37;
+  --color-orion-brown: #3D2B1F;
+}
+
+/* Styles de secours pour être sûr que le lien se fait */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #0047AB; /* Bleu Orion */
+  color: white;
+  min-height: 100vh;
+}
