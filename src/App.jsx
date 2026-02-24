@@ -363,7 +363,7 @@ function App() {
             <div style={{ position: 'relative' }}>
               <div style={{ display: 'inline-block', background: 'rgba(191,149,63,0.12)', border: '1px solid rgba(191,149,63,0.4)', borderRadius: '50px', padding: '6px 20px', marginBottom: '28px', fontSize: '0.7rem', color: '#BF953F', fontWeight: 700 }}>✦ Arte Comestible ✦</div>
               <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', fontWeight: 700, lineHeight: 1.1, color: 'white', textShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>Gelatinas 3D</h1>
-              <h1 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', fontWeight: 700, marginBottom: '32px' }}>que son obras de arte</h1>
+              <h1 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', fontWeight: 700, marginBottom: '32px' }}>son obras de arte</h1>
               <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <button onClick={() => setIsMenuOpen(true)} className="gold-button-shiny" style={{ border: 'none', borderRadius: '50px', padding: '18px 40px', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 900, color: '#0047AB' }}>Ver Catálogo</button>
                 <button onClick={() => setIsCartOpen(true)} style={{ background: 'rgba(255,255,255,0.1)', color: 'white', borderRadius: '50px', padding: '18px 36px', border: '1px solid rgba(191,149,63,0.3)', cursor: 'pointer' }}>🛒 Mi Carrito</button>
