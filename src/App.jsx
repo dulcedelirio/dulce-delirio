@@ -343,11 +343,16 @@ function App() {
       <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cart={cart} onRemove={removeFromCart} onUpdateQty={updateQty} />
 
       <main>
-        {/* HERO SECTION */}
+      {/* HERO SECTION */}
         <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '120px 24px 80px', position: 'relative' }}>
           <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-            <img src={fleur} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6 }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(230,95,165,0.4) 100%)' }} />
+            <img src={fleur} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }} />
+            {/* MODIFICATION : Gradient Rose Pastel Clair */}
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to bottom, rgba(255, 240, 245, 0.7) 0%, rgba(255, 221, 230, 0.9) 100%)'
+            }} />
           </div>
 
           <div style={{ position: 'relative', zIndex: 2, width: '100%' }}>
