@@ -180,7 +180,7 @@ function MenuModal({ isOpen, onClose, onAddToCart }) {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexShrink: 0 }}>
                   <span className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontWeight: 700 }}>$ {fmt(item.price)}</span>
-                  <button onClick={() => { onAddToCart(item); onClose(); }} className="gold-button-shiny" style={{ border: 'none', borderRadius: '50px', padding: '8px 16px', cursor: 'pointer', fontFamily: "'Inter', sans-serif", fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#E65FA5' }}>+ Añadir</button>
+                  <button onClick={() => { onAddToCart(item); }} className="gold-button-shiny" style={{ border: 'none', borderRadius: '50px', padding: '8px 16px', cursor: 'pointer', fontFamily: "'Inter', sans-serif", fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#E65FA5' }}>+ Añadir</button>
                 </div>
               </div>
             ))}

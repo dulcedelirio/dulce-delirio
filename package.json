@@ -3,14 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://TON-PSEUDO-GITHUB.github.io/dulce-delirio/",
+  "homepage": "https://dulcedelirio.github.io/dulce-delirio/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "ship": "git add . && git commit -m \"Mise à jour GelArte 3D\" && git push origin main && npm run deploy"
   },
   "dependencies": {
     "react": "^19.2.0",
