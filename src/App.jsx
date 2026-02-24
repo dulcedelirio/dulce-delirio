@@ -250,13 +250,27 @@ function App() {
         @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
         /* Mobile Optimizations */
-        @media (max-width: 768px) {
-          .nav-link-desktop, .cart-text-desktop, .hide-on-mobile { display: none; }
-          .modal-content { padding: 30px 20px !important; }
-          .menu-item-flex { flex-direction: column; align-items: flex-start !important; }
-          .hero-images-circle { width: 320px !important; height: 320px !important; }
-          .hero-side-img { display: none; }
-        }
+          @media (max-width: 768px) {
+            .nav-link-desktop, .cart-text-desktop, .hide-on-mobile { display: none; }
+            .modal-content { padding: 30px 20px !important; }
+            .menu-item-flex { flex-direction: column; align-items: flex-start !important; }
+            .hero-images-circle { width: 320px !important; height: 320px !important; }
+            .hero-side-img { display: none; }
+
+            /* AJOUTS POUR FIXER LA NAVBAR SUR MOBILE */
+            nav {
+              background: rgba(0, 10, 30, 0.9) !important; /* Fond sombre pour voir les boutons */
+              padding: 12px 15px !important;
+              backdrop-filter: blur(10px);
+            }
+            .gold-text-complete {
+              font-size: 1.1rem !important; /* On réduit le logo pour gagner de la place */
+            }
+            .gold-button-shiny {
+              padding: 8px 15px !important; /* Bouton "Menu" plus compact */
+              font-size: 0.65rem !important;
+            }
+          }
       `}</style>
 
       <Navbar onOpenMenu={() => setIsMenuOpen(true)} cartCount={cartCount} onOpenCart={() => setIsCartOpen(true)} />
@@ -267,7 +281,7 @@ function App() {
         {/* HERO SECTION */}
         <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '120px 24px 80px', position: 'relative' }}>
           <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-            <img src={fleur} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }} />
+            <img src={fleur} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6 }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(230,95,165,0.4) 100%)' }} />
           </div>
 
