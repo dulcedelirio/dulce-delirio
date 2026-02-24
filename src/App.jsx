@@ -375,19 +375,28 @@ function App() {
         </section>
 
         {/* PRODUCTOS SECTION */}
-        <section id="productos" style={{ padding: '80px 24px 100px', maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '72px' }}>
-            <p style={{ color: '#BF953F', fontWeight: 700, textTransform: 'uppercase', fontSize: '0.7rem', letterSpacing: '0.3em' }}>✦ Nuestras Creaciones ✦</p>
-            <h2 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', fontWeight: 700 }}>Las Más Deseadas</h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-            {PRODUCTS.map(p => (
-              <div key={p.id} style={{ padding: '1px', background: 'linear-gradient(to bottom, rgba(191,149,63,0.5), transparent)', borderRadius: '30px' }}>
-                <GelCard product={p} onAddToCart={addToCart} />
-              </div>
-            ))}
-          </div>
-        </section>
+          <section id="productos" style={{ padding: '80px 24px 100px', maxWidth: '1100px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '72px' }}>
+              <p style={{ color: '#BF953F', fontWeight: 700, textTransform: 'uppercase', fontSize: '0.7rem', letterSpacing: '0.3em' }}>✦ Nuestras Creaciones ✦</p>
+              <h2 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', fontWeight: 700 }}>Las Más Deseadas</h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+              {PRODUCTS.map(p => (
+                <div key={p.id} style={{
+                  padding: '1px',
+                  background: 'linear-gradient(to bottom, rgba(191,149,63,0.5), transparent)',
+                  borderRadius: '30px',
+                  // MODIFICATIONS ICI :
+                  backgroundColor: 'rgba(0, 71, 171, 0.9)', // Fond Bleu Cobalt
+                  backdropFilter: 'blur(10px)',            // Effet de profondeur
+                  boxShadow: '0 15px 35px rgba(0, 0, 0, 0.3)', // Ombre pour détacher du fond rose
+                  overflow: 'hidden'
+                }}>
+                  <GelCard product={p} onAddToCart={addToCart} />
+                </div>
+              ))}
+            </div>
+          </section>
 
         {/* PROCESO SECTION */}
         <section id="proceso" style={{ padding: '80px 24px 100px', background: 'linear-gradient(180deg, transparent, rgba(191,149,63,0.03), transparent)' }}>
