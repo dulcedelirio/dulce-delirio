@@ -251,25 +251,43 @@ function App() {
 
         /* Mobile Optimizations */
           @media (max-width: 768px) {
-            .nav-link-desktop, .cart-text-desktop, .hide-on-mobile { display: none; }
+            /* 1. On retire .nav-link-desktop du display:none pour qu'ils reviennent */
+            .cart-text-desktop, .hide-on-mobile { display: none; }
+
+            nav {
+              background: rgba(0, 10, 30, 0.95) !important;
+              padding: 10px 10px !important;
+              backdrop-filter: blur(10px);
+              flex-direction: column !important; /* Force le passage à la ligne */
+              align-items: center !important;
+              gap: 8px !important;
+            }
+
+            /* Ligne 1 : Le titre/Logo */
+            .gold-text-complete {
+              font-size: 1.2rem !important;
+              margin-bottom: 2px;
+            }
+
+            /* Ligne 2 : Le conteneur des liens et boutons */
+            /* Note : Pour que ça marche bien, assure-toi que le parent des liens n'a pas display:none */
+            .nav-link-desktop {
+              display: inline-block !important; /* On les réactive */
+              font-size: 0.6rem !important;
+              margin: 0 5px;
+              letter-spacing: 0.05em;
+              opacity: 0.9;
+            }
+
+            .gold-button-shiny {
+              padding: 6px 12px !important;
+              font-size: 0.6rem !important;
+            }
+
             .modal-content { padding: 30px 20px !important; }
-            .menu-item-flex { flex-direction: column; align-items: flex-start !important; }
             .hero-images-circle { width: 320px !important; height: 320px !important; }
             .hero-side-img { display: none; }
-
-            /* AJOUTS POUR FIXER LA NAVBAR SUR MOBILE */
-            nav {
-              background: rgba(0, 10, 30, 0.9) !important; /* Fond sombre pour voir les boutons */
-              padding: 12px 15px !important;
-              backdrop-filter: blur(10px);
-            }
-            .gold-text-complete {
-              font-size: 1.1rem !important; /* On réduit le logo pour gagner de la place */
-            }
-            .gold-button-shiny {
-              padding: 8px 15px !important; /* Bouton "Menu" plus compact */
-              font-size: 0.65rem !important;
-            }
+          }
           }
       `}</style>
 
