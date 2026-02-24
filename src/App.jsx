@@ -350,9 +350,6 @@ function App() {
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(230,95,165,0.4) 100%)' }} />
           </div>
 
-          <img src={fleur1} className="hero-side-img" alt="" style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', width: '20%', opacity: 0.45, borderRadius: '0 50% 50% 0', height: '400px', objectFit: 'cover' }} />
-          <img src={fleur2} className="hero-side-img" alt="" style={{ position: 'absolute', right: 0, top: '55%', transform: 'translateY(-50%)', width: '20%', opacity: 0.45, borderRadius: '50% 0 0 50%', height: '400px', objectFit: 'cover' }} />
-
           <div style={{ position: 'relative', zIndex: 2, width: '100%' }}>
             <div className="hero-images-circle" style={{ position: 'absolute', width: '520px', height: '520px', borderRadius: '50%', border: '1px solid rgba(191,149,63,0.12)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', animation: 'spin-slow 30s linear infinite' }}>
               {[img3d, img3d1, img3d2, img3d3, img3d4, img3d5].map((src, i) => (
