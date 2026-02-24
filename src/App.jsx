@@ -325,6 +325,16 @@ function App() {
             .hero-images-circle { width: 320px !important; height: 320px !important; }
             .hero-side-img { display: none; }
           }
+          .footer-link {
+          transition: all 0.3s ease;
+          opacity: 0.6; /* Un peu discret de base */
+        }
+        .footer-link:hover {
+          color: #FCF6BA !important; /* Devient or brillant au survol */
+          opacity: 1;
+          text-shadow: 0 0 8px rgba(191,149,63,0.5); /* Petit effet de lueur */
+          transform: translateY(-2px); /* Petit saut vers le haut */
+        }
           }
       `}</style>
 
