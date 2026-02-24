@@ -347,7 +347,7 @@ function App() {
         <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '120px 24px 80px', position: 'relative' }}>
           <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
             {/* L'image de fond est conservée avec une opacité légère pour laisser voir le rose poudré */}
-            <img src={fleur} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3 }} />
+            <img src={fleur} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
             {/* LE CALQUE DE DÉGRADÉ A ÉTÉ SUPPRIMÉ ICI */}
           </div>
 
