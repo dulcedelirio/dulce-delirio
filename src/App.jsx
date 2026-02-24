@@ -351,7 +351,7 @@ function App() {
           </div>
 
           <div style={{ position: 'relative', zIndex: 2, width: '100%' }}>
-            <div className="hero-images-circle" style={{ position: 'absolute', width: '520px', height: '520px', borderRadius: '50%', border: '1px solid rgba(191,149,63,0.12)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', animation: 'spin-slow 30s linear infinite' }}>
+            <div className="hero-images-circle" style={{ position: 'absolute', width: '650px', height: '650px', borderRadius: '50%', border: '1px solid rgba(191,149,63,0.12)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', animation: 'spin-slow 30s linear infinite' }}>
               {[img3d, img3d1, img3d2, img3d3, img3d4, img3d5].map((src, i) => (
                 <div key={i} style={{ position: 'absolute', top: `${50 - 48 * Math.cos(i * Math.PI / 3)}%`, left: `${50 + 48 * Math.sin(i * Math.PI / 3)}%`, transform: 'translate(-50%,-50%)', animation: 'spin-slow 30s linear infinite reverse' }}>
                   <img src={src} alt="" style={{ width: '52px', height: '52px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(191,149,63,0.5)' }} />
