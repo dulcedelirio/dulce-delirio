@@ -367,37 +367,204 @@ function App() {
               <div style={{ marginBottom: '28px' }}>
                 <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#BF953F', fontWeight: 700, marginBottom: '6px' }}>Horario</div>
                 {[['Lun – Vie','09:00 – 19:00'],['Sábados','09:00 – 21:00'],['Domingos','10:00 – 16:00 ✨']].map(([d,h]) => (
-                  <div key={d} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.04)', fontFamily: "'Inter', sans-serif", fontSize: '0.85rem', color: 'rgba(255,255,255,0.65)' }}>
-                    <span style={{ opacity: 0.6 }}>{d}</span><span style={{ fontWeight: 600 }}>{h}</span>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#BF953F', fontWeight: 700, marginBottom: '8px' }}>Dirección</div>
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.6 }}>Calle Córdoba, 12<br />03178 Benijófar, Alicante</p>
-              </div>
-              <a href={`https://wa.me/${WHATSAPP}?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="gold-button-shiny" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', marginTop: '36px', borderRadius: '50px', padding: '14px 30px', textDecoration: 'none', fontFamily: "'Inter', sans-serif", fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#E65FA5' }}>
-                💬 WhatsApp
-              </a>
-            </div>
-            <div style={{ flex: '1 1 300px', minHeight: '400px' }}>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141.5!2d-0.7!3d38.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6395!2sCalle%20C%C3%B3rdoba%2C%2012%2C%2003178%20Benij%C3%B3far%2C%20Alicante!5e0!3m2!1ses!2ses!4v1700000000000" style={{ width: '100%', height: '100%', minHeight: '400px', border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)' }} allowFullScreen="" loading="lazy" title="Localización GelArte 3D" />
-            </div>
-          </div>
-        </section>
-      </main>
+                  import React, { useState, useEffect } from 'react';
+  import fleur from './assets/fleur.jpg';
+  import fleur1 from './assets/fleur1.jpg';
+  import fleur2 from './assets/fleur2.jpg';
+  import fleur3 from './assets/fleur3.jpg';
+  import img3d from './assets/3d.jpg';
+  import img3d1 from './assets/3d1.jpg';
+  import img3d2 from './assets/3d2.jpg';
+  import img3d3 from './assets/3d3.jpg';
+  import img3d4 from './assets/3d4.jpg';
+  import img3d5 from './assets/3d5.jpg';
 
-      <footer style={{ background: '#000D1F', padding: '60px 24px', textAlign: 'center', borderTop: '1px solid rgba(191,149,63,0.1)' }}>
-        <p className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2rem', fontWeight: 700, marginBottom: '12px' }}>GelArte 3D Premium</p>
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.15)' }}>© 2026 · Arte Comestible Artesanal · Colombia</p>
-        <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', marginTop: '24px' }}>
-          {['Instagram','TikTok','Pinterest'].map(s => (
-            <span key={s} style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(191,149,63,0.35)', cursor: 'pointer' }}>{s}</span>
-          ))}
+  const PRODUCTS = [
+    { id: 1, name: "Rosa Tridimensional", price: 126000, description: "Rosa 100% comestible con 6 pétalos articulados en capas. Cada flor es única.", img: img3d, badge: "Best Seller" },
+    { id: 2, name: "Mariposa Cristal", price: 99000, description: "Alas translúcidas con degradé natural de colores. Efecto jelly luminoso.", img: img3d4, badge: null },
+    { id: 3, name: "Corazón Brillante", price: 81000, description: "Corazón bicolor con relleno de crema y efecto espejo en la superficie.", img: img3d5, badge: "San Valentín" },
+    { id: 4, name: "Fresa Hiperrealista", price: 90000, description: "Detalle de semillas y textura exterior idéntica a la fruta real.", img: img3d3, badge: null },
+    { id: 5, name: "Orquídea Exótica", price: 153000, description: "Orquídea de 3 piezas con degradado morado-blanco hecho a mano.", img: img3d1, badge: null },
+    { id: 6, name: "Bouquet Nupcial", price: 382000, description: "Set de 7 flores mixtas en caja regalo. Perfecto para bodas y eventos.", img: img3d2, badge: "Exclusivo" },
+  ];
+
+  const fmt = (n) => n.toLocaleString('es-CO');
+  const WHATSAPP = "573053356415";
+
+  // --- COMPOSANTS INTERNES ---
+
+  function Navbar({ onOpenMenu, cartCount, onOpenCart }) {
+    const [scrolled, setScrolled] = useState(false);
+    useEffect(() => {
+      const fn = () => setScrolled(window.scrollY > 40);
+      window.addEventListener('scroll', fn);
+      return () => window.removeEventListener('scroll', fn);
+    }, []);
+
+    return (
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        padding: scrolled ? '10px 20px' : '20px 20px',
+        background: scrolled ? 'rgba(0,10,30,0.93)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(191,149,63,0.2)' : 'none',
+        transition: 'all 0.4s ease',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      }}>
+        <span className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.4rem', fontWeight: 700 }}>GelArte 3D</span>
+        <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+          <button onClick={onOpenCart} style={{
+            position: 'relative', background: 'rgba(191,149,63,0.1)', border: '1px solid rgba(191,149,63,0.35)',
+            borderRadius: '50px', padding: '8px 15px', cursor: 'pointer', color: 'white', fontSize: '0.7rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '5px'
+          }}>
+            🛒 {cartCount > 0 && <span style={{ color: '#FCF6BA' }}>{cartCount}</span>}
+          </button>
+          <button onClick={onOpenMenu} className="gold-button-shiny" style={{ border: 'none', borderRadius: '50px', padding: '8px 18px', cursor: 'pointer', fontSize: '0.7rem', fontWeight: 700, color: '#E65FA5' }}>MENÚ</button>
         </div>
-      </footer>
-    </div>
-  );
-}
+      </nav>
+    );
+  }
 
-export default App;
+  function GelCard({ product, onAddToCart }) {
+    const { name, price, description, img, badge } = product;
+    const [added, setAdded] = useState(false);
+    const handleAdd = () => { onAddToCart(product); setAdded(true); setTimeout(() => setAdded(false), 1500); };
+
+    return (
+      <div style={{
+        background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)', border: '1px solid rgba(191,149,63,0.15)',
+        borderRadius: '28px', paddingBottom: '25px', textAlign: 'center', position: 'relative', overflow: 'hidden'
+      }}>
+        {badge && <span style={{ position: 'absolute', top: '12px', right: '12px', background: 'linear-gradient(135deg, #BF953F, #FCF6BA)', color: '#E65FA5', borderRadius: '20px', padding: '4px 10px', fontSize: '0.6rem', fontWeight: 900, zIndex: 2 }}>{badge}</span>}
+        <img src={img} alt={name} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+        <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.2rem', color: 'white', margin: '15px 10px 5px' }}>{name}</h3>
+        <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', padding: '0 15px', marginBottom: '15px' }}>{description}</p>
+        <div className="gold-text-complete" style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '15px' }}>$ {fmt(price)}</div>
+        <button onClick={handleAdd} className="gold-button-shiny" style={{ border: 'none', borderRadius: '50px', padding: '10px 20px', cursor: 'pointer', fontWeight: 700, color: '#E65FA5', fontSize: '0.7rem' }}>
+          {added ? '✓ AÑADIDO' : '+ AÑADIR'}
+        </button>
+      </div>
+    );
+  }
+
+  // Modals simples pour l'exemple
+  function MenuModal({ isOpen, onClose }) { if (!isOpen) return null; return <div onClick={onClose} style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(0,0,0,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><div style={{ color: 'white' }}>Catálogo en construcción... <button onClick={onClose}>Cerrar</button></div></div>; }
+  function CartModal({ isOpen, onClose, cart }) { if (!isOpen) return null; return <div onClick={onClose} style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(0,0,0,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><div style={{ color: 'white' }}>Tu pedido: {cart.length} items <button onClick={onClose}>Cerrar</button></div></div>; }
+
+  // --- COMPOSANT PRINCIPAL ---
+
+  function App() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
+    const [cart, setCart] = useState([]);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+      const handleResize = () => setIsMobile(window.innerWidth < 768);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const addToCart = (product) => {
+      setCart(prev => [...prev, product]);
+    };
+
+    const whatsappMsg = encodeURIComponent("Hola GelArte 3D, me gustaría pedir información.");
+
+    return (
+      <div style={{ minHeight: '100vh', background: '#E65FA5', fontFamily: "'Inter', sans-serif", color: 'white', overflowX: 'hidden' }}>
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cormorant+Garamond:wght@700&display=swap');
+          .gold-text-complete { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: shine 4s linear infinite; }
+          @keyframes shine { to { background-position: 200% center; } }
+          .gold-button-shiny { background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728); transition: 0.3s; }
+          .gold-button-shiny:active { transform: scale(0.95); }
+          .gold-card-wrap { padding: 1px; background: linear-gradient(to bottom, rgba(191,149,63,0.5), transparent); border-radius: 30px; }
+        `}</style>
+
+        <Navbar onOpenMenu={() => setIsMenuOpen(true)} cartCount={cart.length} onOpenCart={() => setIsCartOpen(true)} />
+        <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cart={cart} />
+
+        <main>
+          {/* HERO SECTION OPTIMISÉE */}
+          <section style={{
+            minHeight: '100vh', display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center', padding: isMobile ? '80px 20px' : '100px 40px',
+            textAlign: 'center', position: 'relative'
+          }}>
+            <div style={{ position: 'absolute', inset: 0, opacity: 0.15, zIndex: 0 }}>
+               <img src={fleur} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+
+            <div style={{ zIndex: 2, maxWidth: '800px' }}>
+              <h1 className="gold-text-complete" style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: isMobile ? '3.2rem' : '5.5rem',
+                lineHeight: 1, marginBottom: '20px'
+              }}>Gelatinas 3D</h1>
+              <p style={{ fontSize: isMobile ? '0.9rem' : '1.1rem', opacity: 0.8, marginBottom: '40px' }}>
+                Arte comestible artesanal para eventos exclusivos.
+              </p>
+
+              <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <button onClick={() => setIsMenuOpen(true)} className="gold-button-shiny" style={{ border: 'none', borderRadius: '50px', padding: '15px 35px', cursor: 'pointer', fontWeight: 900, color: '#E65FA5' }}>CATÁLOGO</button>
+                {isMobile && (
+                  <div style={{ width: '100%', display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '20px' }}>
+                     <img src={fleur1} style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #BF953F' }} />
+                     <img src={fleur2} style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #BF953F' }} />
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {!isMobile && (
+              <>
+                <img src={fleur1} style={{ position: 'absolute', left: 0, top: '50%', width: '200px', borderRadius: '0 100px 100px 0', opacity: 0.5 }} />
+                <img src={fleur2} style={{ position: 'absolute', right: 0, top: '50%', width: '200px', borderRadius: '100px 0 0 100px', opacity: 0.5 }} />
+              </>
+            )}
+          </section>
+
+          {/* PRODUITS */}
+          <section style={{ padding: '60px 20px', maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '30px'
+            }}>
+              {PRODUCTS.map(p => <div key={p.id} className="gold-card-wrap"><GelCard product={p} onAddToCart={addToCart} /></div>)}
+            </div>
+          </section>
+
+          {/* CONTACT & MAP */}
+          <section id="contacto" style={{ padding: isMobile ? '40px 15px' : '80px 40px' }}>
+            <div style={{
+              maxWidth: '1000px', margin: '0 auto', background: 'rgba(0,0,0,0.2)',
+              borderRadius: '40px', overflow: 'hidden', display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row', border: '1px solid rgba(191,149,63,0.2)'
+            }}>
+              <div style={{ flex: 1, padding: isMobile ? '30px' : '50px' }}>
+                <h3 className="gold-text-complete" style={{ fontSize: '2rem', marginBottom: '20px' }}>Contacto</h3>
+                <p style={{ marginBottom: '10px', opacity: 0.8 }}>📍 Calle Córdoba, 12, Benijófar</p>
+                <p style={{ marginBottom: '30px', opacity: 0.8 }}>🕒 Lun-Sáb: 09:00 - 19:00</p>
+                <a href={`https://wa.me/${WHATSAPP}?text=${whatsappMsg}`} target="_blank" className="gold-button-shiny" style={{
+                  display: 'inline-block', padding: '12px 25px', borderRadius: '50px', textDecoration: 'none', color: '#E65FA5', fontWeight: 700
+                }}>💬 WhatsApp</a>
+              </div>
+              <div style={{ flex: 1, minHeight: '300px' }}>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141.5!2d-0.7!3d38.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDAwJzAwLjAiTiAwwrA0MicwMC4wIlc!5e0!3m2!1ses!2ses!4v1620000000000" style={{ width: '100%', height: '100%', border: 0, filter: 'grayscale(1) invert(0.9)' }} allowFullScreen loading="lazy" />
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer style={{ padding: '40px', textAlign: 'center', background: '#000D1F', borderTop: '1px solid rgba(191,149,63,0.1)' }}>
+          <p className="gold-text-complete" style={{ fontSize: '1.5rem', fontWeight: 700 }}>GelArte 3D</p>
+          <p style={{ fontSize: '0.6rem', letterSpacing: '2px', marginTop: '10px', opacity: 0.4 }}>© 2026 COLOMBIA - ARTE PREMIUM</p>
+        </footer>
+      </div>
+    );
+  }
+
+  export default App;
