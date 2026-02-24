@@ -421,27 +421,41 @@ function App() {
         </section>
 
         {/* CONTACTO SECTION */}
-        <section id="contacto" style={{ padding: '80px 24px 100px', maxWidth: '900px', margin: '0 auto' }}>
-          <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(191,149,63,0.15)', borderRadius: '40px', overflow: 'hidden', display: 'flex', flexWrap: 'wrap' }}>
-            <div style={{ flex: '1 1 300px', padding: '56px 48px' }}>
-              <p style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase' }}>Visítanos</p>
-              <h3 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.8rem', fontWeight: 700, marginBottom: '32px' }}>Encuéntranos</h3>
-              <div style={{ marginBottom: '28px' }}>
-                <div style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, marginBottom: '6px' }}>Horario</div>
-                {[['Lun – Vie','09:00 – 19:00'],['Sábados','09:00 – 21:00'],['Domingos','10:00 – 16:00 ✨']].map(([d,h]) => (
-                  <div key={d} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.04)', fontSize: '0.85rem' }}>
-                    <span style={{ opacity: 0.6 }}>{d}</span><span style={{ fontWeight: 600 }}>{h}</span>
-                  </div>
-                ))}
+          <section id="contacto" style={{ padding: '80px 24px 100px', maxWidth: '900px', margin: '0 auto' }}>
+            <div style={{
+              background: 'rgba(0, 71, 171, 0.9)', // FOND BLEU COBALT
+              border: '1px solid rgba(191,149,63,0.3)',
+              borderRadius: '40px',
+              overflow: 'hidden',
+              display: 'flex',
+              flexWrap: 'wrap',
+              backdropFilter: 'blur(20px)',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.3)'
+            }}>
+              <div style={{ flex: '1 1 300px', padding: '56px 48px' }}>
+                <p style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase' }}>Visítanos</p>
+                <h3 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.8rem', fontWeight: 700, marginBottom: '32px' }}>Encuéntranos</h3>
+
+                <div style={{ marginBottom: '28px' }}>
+                  <div style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, marginBottom: '6px' }}>Horario</div>
+                  {[['Lun – Vie','09:00 – 19:00'],['Sábados','09:00 – 21:00'],['Domingos','10:00 – 16:00 ✨']].map(([d,h]) => (
+                    <div key={d} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(191,149,63,0.15)', fontSize: '0.85rem' }}>
+                      <span style={{ color: 'rgba(255,255,255,0.7)' }}>{d}</span>
+                      <span style={{ fontWeight: 600, color: 'white' }}>{h}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div>
+                  <div style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, marginBottom: '8px' }}>Dirección</div>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', color: 'rgba(255,255,255,0.9)' }}>Calle Córdoba, 12<br />03178 Benijófar, Alicante</p>
+                </div>
+
+                {/* BOUTON WHATSAPP : Texte changé de rose à Bleu Cobalt */}
+                <a href={`https://wa.me/${WHATSAPP}?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="gold-button-shiny" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', marginTop: '36px', borderRadius: '50px', padding: '14px 30px', textDecoration: 'none', color: '#0047AB', fontWeight: 700 }}>
+                  💬 WhatsApp
+                </a>
               </div>
-              <div>
-                <div style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, marginBottom: '8px' }}>Dirección</div>
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', color: 'rgba(255,255,255,0.8)' }}>Calle Córdoba, 12<br />03178 Benijófar, Alicante</p>
-              </div>
-              <a href={`https://wa.me/${WHATSAPP}?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="gold-button-shiny" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', marginTop: '36px', borderRadius: '50px', padding: '14px 30px', textDecoration: 'none', color: '#E65FA5', fontWeight: 700 }}>
-                💬 WhatsApp
-              </a>
-            </div>
             <div style={{ flex: '1 1 300px', minHeight: '400px' }}>
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141.5!2d-0.7!3d38.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6395!2sCalle%20C%C3%B3rdoba%2C%2012%2C%2003178%20Benij%C3%B3far%2C%20Alicante!5e0!3m2!1ses!2ses!4v1700000000000" style={{ width: '100%', height: '100%', border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)' }} allowFullScreen="" loading="lazy" title="Localización GelArte 3D" />
             </div>
