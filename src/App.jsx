@@ -432,16 +432,23 @@ function App() {
           </div>
         </section>
       </main>
-
       <footer style={{ background: '#000D1F', padding: '60px 24px', textAlign: 'center', borderTop: '1px solid rgba(191,149,63,0.1)' }}>
-        <p className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2rem', fontWeight: 700, marginBottom: '12px' }}>GelArte 3D Premium</p>
-        <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.15)' }}>© 2026 · Arte Comestible Artesanal · Colombia</p>
-        <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', marginTop: '24px' }}>
-          {['Instagram','TikTok','Pinterest'].map(s => (
-            <span key={s} style={{ fontSize: '0.7rem', color: 'rgba(191,149,63,0.35)', cursor: 'pointer' }}>{s}</span>
-          ))}
-        </div>
-      </footer>
+              <p className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2rem', fontWeight: 700, marginBottom: '12px' }}>GelArte 3D Premium</p>
+              <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.15)' }}>© 2026 · Arte Comestible Artesanal · Colombia</p>
+
+              <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', marginTop: '24px' }}>
+                {/* Lien Instagram */}
+                <a
+                  href="https://www.instagram.com/dulcedeliri02?igsh=bnJsb2NoN2VwcTIx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: '0.7rem', color: 'rgba(191,149,63,0.35)', cursor: 'pointer', textDecoration: 'none' }}
+                >
+                  Instagram
+                </a>
+
+              </div>
+            </footer>
     </div>
   );
 }
