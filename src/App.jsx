@@ -342,19 +342,20 @@ function App() {
       <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} onAddToCart={addToCart} />
       <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cart={cart} onRemove={removeFromCart} onUpdateQty={updateQty} />
 
-      <main>
+      <main style={{ backgroundColor: '#FFF5F7', minHeight: '100vh' }}>
         {/* HERO SECTION */}
         <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '120px 24px 80px', position: 'relative' }}>
           <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
             <img src={fleur} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6 }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(230,95,165,0.4) 100%)' }} />
+            {/* Dégradé mis à jour vers le rose pastel */}
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(255,245,247,0.2) 0%, #FFF5F7 100%)' }} />
           </div>
 
           <div style={{ position: 'relative', zIndex: 2, width: '100%' }}>
             <div className="hero-images-circle" style={{ position: 'absolute', width: '650px', height: '650px', borderRadius: '50%', border: '1px solid rgba(191,149,63,0.12)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', animation: 'spin-slow 30s linear infinite' }}>
               {[img3d, img3d1, img3d2, img3d3, img3d4, img3d5].map((src, i) => (
                 <div key={i} style={{ position: 'absolute', top: `${50 - 48 * Math.cos(i * Math.PI / 3)}%`, left: `${50 + 48 * Math.sin(i * Math.PI / 3)}%`, transform: 'translate(-50%,-50%)', animation: 'spin-slow 30s linear infinite reverse' }}>
-                  <img src={src} alt="" style={{ width: '52px', height: '52px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(191,149,63,0.5)' }} />
+                  <img src={src} alt="" style={{ width: '65px', height: '65px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(191,149,63,0.5)' }} />
                 </div>
               ))}
             </div>
@@ -364,7 +365,7 @@ function App() {
               <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', fontWeight: 700, lineHeight: 1.1, color: 'white' }}>Gelatinas 3D</h1>
               <h1 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', fontWeight: 700, marginBottom: '32px' }}>que son obras de arte</h1>
               <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <button onClick={() => setIsMenuOpen(true)} className="gold-button-shiny" style={{ border: 'none', borderRadius: '50px', padding: '18px 40px', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 900, color: '#E65FA5' }}>Ver Catálogo</button>
+                <button onClick={() => setIsMenuOpen(true)} className="gold-button-shiny" style={{ border: 'none', borderRadius: '50px', padding: '18px 40px', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 900, color: '#0047AB' }}>Ver Catálogo</button>
                 <button onClick={() => setIsCartOpen(true)} style={{ background: 'rgba(255,255,255,0.04)', color: 'white', borderRadius: '50px', padding: '18px 36px', border: '1px solid rgba(191,149,63,0.3)', cursor: 'pointer' }}>🛒 Mi Carrito</button>
               </div>
             </div>
@@ -372,31 +373,30 @@ function App() {
         </section>
 
         {/* PRODUCTOS SECTION */}
-          <section id="productos" style={{ padding: '80px 24px 100px', maxWidth: '1100px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '72px' }}>
-              <p style={{ color: '#BF953F', fontWeight: 700, textTransform: 'uppercase', fontSize: '0.7rem', letterSpacing: '0.3em' }}>✦ Nuestras Creaciones ✦</p>
-              <h2 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', fontWeight: 700 }}>Las Más Deseadas</h2>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-              {PRODUCTS.map(p => (
-                <div key={p.id} style={{
-                  padding: '1px',
-                  background: 'linear-gradient(to bottom, rgba(191,149,63,0.5), transparent)',
-                  borderRadius: '30px',
-                  // MODIFICATIONS ICI :
-                  backgroundColor: 'rgba(0, 71, 171, 0.9)', // Fond Bleu Cobalt
-                  backdropFilter: 'blur(10px)',            // Effet de profondeur
-                  boxShadow: '0 15px 35px rgba(0, 0, 0, 0.3)', // Ombre pour détacher du fond rose
-                  overflow: 'hidden'
-                }}>
-                  <GelCard product={p} onAddToCart={addToCart} />
-                </div>
-              ))}
-            </div>
-          </section>
+        <section id="productos" style={{ padding: '80px 24px 100px', maxWidth: '1100px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '72px' }}>
+            <p style={{ color: '#BF953F', fontWeight: 700, textTransform: 'uppercase', fontSize: '0.7rem', letterSpacing: '0.3em' }}>✦ Nuestras Creaciones ✦</p>
+            <h2 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', fontWeight: 700 }}>Las Más Deseadas</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+            {PRODUCTS.map(p => (
+              <div key={p.id} style={{
+                padding: '1px',
+                background: 'linear-gradient(to bottom, rgba(191,149,63,0.5), transparent)',
+                borderRadius: '30px',
+                backgroundColor: 'rgba(0, 71, 171, 0.9)',
+                backdropFilter: 'blur(10px)',
+                boxShadow: '0 15px 35px rgba(0, 0, 0, 0.3)',
+                overflow: 'hidden'
+              }}>
+                <GelCard product={p} onAddToCart={addToCart} />
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* PROCESO SECTION */}
-        <section id="proceso" style={{ padding: '80px 24px 100px', background: 'linear-gradient(180deg, transparent, rgba(191,149,63,0.03), transparent)' }}>
+        <section id="proceso" style={{ padding: '80px 24px 100px', background: 'linear-gradient(180deg, #FFF5F7, rgba(191,149,63,0.03), #FFF5F7)' }}>
           <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
             <h2 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', marginBottom: '40px' }}>Del Concepto a la Mesa</h2>
             <div style={{ width: '220px', height: '220px', borderRadius: '50%', overflow: 'hidden', margin: '0 auto 48px', border: '3px solid rgba(191,149,63,0.25)' }}>
@@ -404,7 +404,7 @@ function App() {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px' }}>
               {[
-                { n: '01', t: 'Diseño', d: 'Tú eliges el motivo. Cada pieza se boceta antes de empezar.', e: '✏️' },
+                { n: '01', t: 'Diseño', d: 'Tú eliges el motifo. Cada pieza se boceta antes de empezar.', e: '✏️' },
                 { n: '02', t: 'Elaboración', d: 'Capas inyectadas a mano. 8–24h de travail.', e: '🎨' },
                 { n: '03', t: 'Curado', d: 'Reposo en frío para brillo perfecto.', e: '❄️' },
                 { n: '04', t: 'Entrega', d: 'Embalaje premium refrigerado.', e: '🎁' },
@@ -421,41 +421,37 @@ function App() {
         </section>
 
         {/* CONTACTO SECTION */}
-          <section id="contacto" style={{ padding: '80px 24px 100px', maxWidth: '900px', margin: '0 auto' }}>
-            <div style={{
-              background: 'rgba(0, 71, 171, 0.9)', // FOND BLEU COBALT
-              border: '1px solid rgba(191,149,63,0.3)',
-              borderRadius: '40px',
-              overflow: 'hidden',
-              display: 'flex',
-              flexWrap: 'wrap',
-              backdropFilter: 'blur(20px)',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.3)'
-            }}>
-              <div style={{ flex: '1 1 300px', padding: '56px 48px' }}>
-                <p style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase' }}>Visítanos</p>
-                <h3 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.8rem', fontWeight: 700, marginBottom: '32px' }}>Encuéntranos</h3>
-
-                <div style={{ marginBottom: '28px' }}>
-                  <div style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, marginBottom: '6px' }}>Horario</div>
-                  {[['Lun – Vie','09:00 – 19:00'],['Sábados','09:00 – 21:00'],['Domingos','10:00 – 16:00 ✨']].map(([d,h]) => (
-                    <div key={d} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(191,149,63,0.15)', fontSize: '0.85rem' }}>
-                      <span style={{ color: 'rgba(255,255,255,0.7)' }}>{d}</span>
-                      <span style={{ fontWeight: 600, color: 'white' }}>{h}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div>
-                  <div style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, marginBottom: '8px' }}>Dirección</div>
-                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', color: 'rgba(255,255,255,0.9)' }}>Calle Córdoba, 12<br />03178 Benijófar, Alicante</p>
-                </div>
-
-                {/* BOUTON WHATSAPP : Texte changé de rose à Bleu Cobalt */}
-                <a href={`https://wa.me/${WHATSAPP}?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="gold-button-shiny" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', marginTop: '36px', borderRadius: '50px', padding: '14px 30px', textDecoration: 'none', color: '#0047AB', fontWeight: 700 }}>
-                  💬 WhatsApp
-                </a>
+        <section id="contacto" style={{ padding: '80px 24px 100px', maxWidth: '900px', margin: '0 auto' }}>
+          <div style={{
+            background: 'rgba(0, 71, 171, 0.9)',
+            border: '1px solid rgba(191,149,63,0.3)',
+            borderRadius: '40px',
+            overflow: 'hidden',
+            display: 'flex',
+            flexWrap: 'wrap',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.3)'
+          }}>
+            <div style={{ flex: '1 1 300px', padding: '56px 48px' }}>
+              <p style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase' }}>Visítanos</p>
+              <h3 className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.8rem', fontWeight: 700, marginBottom: '32px' }}>Encuéntranos</h3>
+              <div style={{ marginBottom: '28px' }}>
+                <div style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, marginBottom: '6px' }}>Horario</div>
+                {[['Lun – Vie','09:00 – 19:00'],['Sábados','09:00 – 21:00'],['Domingos','10:00 – 16:00 ✨']].map(([d,h]) => (
+                  <div key={d} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(191,149,63,0.15)', fontSize: '0.85rem' }}>
+                    <span style={{ color: 'rgba(255,255,255,0.7)' }}>{d}</span>
+                    <span style={{ fontWeight: 600, color: 'white' }}>{h}</span>
+                  </div>
+                ))}
               </div>
+              <div>
+                <div style={{ color: '#BF953F', fontSize: '0.65rem', fontWeight: 700, marginBottom: '8px' }}>Dirección</div>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', color: 'rgba(255,255,255,0.9)' }}>Calle Córdoba, 12<br />03178 Benijófar, Alicante</p>
+              </div>
+              <a href={`https://wa.me/${WHATSAPP}?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="gold-button-shiny" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', marginTop: '36px', borderRadius: '50px', padding: '14px 30px', textDecoration: 'none', color: '#0047AB', fontWeight: 700 }}>
+                💬 WhatsApp
+              </a>
+            </div>
             <div style={{ flex: '1 1 300px', minHeight: '400px' }}>
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141.5!2d-0.7!3d38.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6395!2sCalle%20C%C3%B3rdoba%2C%2012%2C%2003178%20Benij%C3%B3far%2C%20Alicante!5e0!3m2!1ses!2ses!4v1700000000000" style={{ width: '100%', height: '100%', border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)' }} allowFullScreen="" loading="lazy" title="Localización GelArte 3D" />
             </div>
