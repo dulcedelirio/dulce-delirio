@@ -267,8 +267,8 @@ function App() {
         {/* HERO SECTION */}
         <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '120px 24px 80px', position: 'relative' }}>
           <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-            <img src={fleur} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.14 }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,26,61,0.5) 0%, #E65FA5 100%)' }} />
+            <img src={fleur} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(230,95,165,0.4) 100%)' }} />
           </div>
 
           <img src={fleur1} className="hero-side-img" alt="" style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', width: '20%', opacity: 0.45, borderRadius: '0 50% 50% 0', height: '400px', objectFit: 'cover' }} />
