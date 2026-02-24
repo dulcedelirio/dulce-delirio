@@ -32,44 +32,77 @@ function Navbar({ onOpenMenu, cartCount, onOpenCart }) {
 
   return (
     <nav style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-      padding: scrolled ? '10px 40px' : '22px 40px',
-      background: scrolled ? 'rgba(0,10,30,0.93)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(191,149,63,0.2)' : 'none',
-      transition: 'all 0.4s ease',
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+    padding: scrolled ? '10px 20px' : '20px 20px',
+    background: scrolled ? 'rgba(0,10,30,0.95)' : 'transparent',
+    backdropFilter: scrolled ? 'blur(20px)' : 'none',
+    borderBottom: scrolled ? '1px solid rgba(191,149,63,0.2)' : 'none',
+    transition: 'all 0.4s ease',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap', // Permet le passage à la ligne sur mobile
+    rowGap: '10px'    // Espace entre les deux lignes sur mobile
+  }}>
+    <span className="gold-text-complete" style={{
+      fontFamily: "'Cormorant Garamond', serif",
+      fontSize: '1.6rem',
+      fontWeight: 700,
+      letterSpacing: '0.05em',
+      flexShrink: 0
     }}>
-      <span className="gold-text-complete" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.6rem', fontWeight: 700, letterSpacing: '0.05em' }}>GelArte 3D</span>
-      <div style={{ display: 'flex', gap: '28px', alignItems: 'center' }}>
-        {[['#productos','Creaciones'],['#proceso','Proceso'],['#contacto','Contacto']].map(([href, label]) => (
-          <a key={href} href={href} className="nav-link-desktop" style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>{label}</a>
-        ))}
-        <button onClick={onOpenCart} style={{
-          position: 'relative', background: 'rgba(191,149,63,0.1)',
-          border: '1px solid rgba(191,149,63,0.35)', borderRadius: '50px',
-          padding: '9px 20px', cursor: 'pointer', color: 'white',
-          fontFamily: "'Inter', sans-serif", fontSize: '0.75rem',
-          fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-          display: 'flex', alignItems: 'center', gap: '8px',
+      GelArte 3D
+    </span>
+
+    <div style={{
+      display: 'flex',
+      gap: '15px',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexGrow: 1, // Prend la place disponible pour centrer les liens
+      minWidth: '280px' // Force le passage à la ligne si l'écran est trop petit
+    }}>
+      {[['#productos','Creaciones'],['#proceso','Proceso'],['#contacto','Contacto']].map(([href, label]) => (
+        <a key={href} href={href} className="nav-link-desktop" style={{
+          fontFamily: "'Inter', sans-serif",
+          fontSize: '0.75rem',
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.8)',
+          textDecoration: 'none'
         }}>
-          🛒 <span className="cart-text-desktop">Carrito</span>
-          {cartCount > 0 && (
-            <span style={{
-              position: 'absolute', top: '-8px', right: '-8px',
-              background: 'linear-gradient(135deg, #BF953F, #FCF6BA)',
-              color: '#E65FA5', borderRadius: '50%', width: '20px', height: '20px',
-              fontSize: '0.65rem', fontWeight: 900, display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>{cartCount}</span>
-          )}
-        </button>
-        <button onClick={onOpenMenu} className="gold-button-shiny" style={{
-          border: 'none', borderRadius: '50px', padding: '10px 24px', cursor: 'pointer',
-          fontFamily: "'Inter', sans-serif", fontSize: '0.75rem',
-          fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#E65FA5',
-        }}>Ver Menú</button>
-      </div>
-    </nav>
+          {label}
+        </a>
+      ))}
+
+      <button onClick={onOpenCart} style={{
+        position: 'relative', background: 'rgba(191,149,63,0.1)',
+        border: '1px solid rgba(191,149,63,0.35)', borderRadius: '50px',
+        padding: '8px 15px', cursor: 'pointer', color: 'white',
+        fontFamily: "'Inter', sans-serif", fontSize: '0.7rem',
+        fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+        display: 'flex', alignItems: 'center', gap: '5px',
+      }}>
+        🛒 <span className="cart-text-desktop">Carrito</span>
+        {cartCount > 0 && (
+          <span style={{
+            position: 'absolute', top: '-5px', right: '-5px',
+            background: 'linear-gradient(135deg, #BF953F, #FCF6BA)',
+            color: '#E65FA5', borderRadius: '50%', width: '18px', height: '18px',
+            fontSize: '0.6rem', fontWeight: 900, display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>{cartCount}</span>
+        )}
+      </button>
+
+      <button onClick={onOpenMenu} className="gold-button-shiny" style={{
+        border: 'none', borderRadius: '50px', padding: '8px 18px', cursor: 'pointer',
+        fontFamily: "'Inter', sans-serif", fontSize: '0.7rem',
+        fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#E65FA5',
+      }}>
+        Ver Menú
+      </button>
+    </div>
+  </nav>
   );
 }
 
