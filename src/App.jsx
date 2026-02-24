@@ -34,9 +34,9 @@ function Navbar({ onOpenMenu, cartCount, onOpenCart }) {
     <nav style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
       padding: scrolled ? '10px 15px' : '15px 15px',
-      background: scrolled ? 'rgba(0,10,30,0.95)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(191,149,63,0.2)' : 'none',
+      background: 'rgba(0,10,30,0.95)', // Verrouillé sur sombre
+      backdropFilter: 'blur(20px)',     // Verrouillé sur flou
+      borderBottom: '1px solid rgba(191,149,63,0.2)', // Verrouillé sur bordure
       transition: 'all 0.4s ease',
       display: 'flex',
       alignItems: 'center',
